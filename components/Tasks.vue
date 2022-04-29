@@ -1,9 +1,17 @@
 <template>
-    <div class="conatainer">
-    <AddTask :tasks='tasks' @addNewTask="addNewTask($event)"/>
+  <div class="conatainer">
+    <AddTask :tasks="tasks" @addNewTask="addNewTask($event)" />
     <div class="body">
-      <LoadingTask :loadingTask="loadingTasks" @romoveLoading="changeStatus($event)" @delTask="delTask($event)"/>
-      <DoneTask :doneTask="doneTask" @romoveDone="changeStatus($event)" @delTask="delTask($event)" />
+      <LoadingTask
+        :loadingTask="loadingTasks"
+        @romoveLoading="changeStatus($event)"
+        @delTask="delTask($event)"
+      />
+      <DoneTask
+        :doneTask="doneTask"
+        @romoveDone="changeStatus($event)"
+        @delTask="delTask($event)"
+      />
     </div>
   </div>
 </template>
@@ -28,20 +36,19 @@ export default {
       let ct = [...this.tasks];
       let index = ct.findIndex((t) => t.id === e);
       ct[index].done = !ct[index].done;
-      this.$emit('updateTask',ct)
+      this.$emit("updateTask", ct);
     },
-    delTask(e){
-        let ct=[...this.tasks];
-        ct=ct.filter(t=>t.id!==e);
-        this.$emit('updateTask',ct)
+    delTask(e) {
+      let ct = [...this.tasks];
+      ct = ct.filter((t) => t.id !== e);
+      this.$emit("updateTask", ct);
     },
-    addNewTask(e){
-      this.$emit("updateTask",e)
-    }
+    addNewTask(e) {
+      this.$emit("updateTask", e);
+    },
   },
 };
 </script>
 
 <style>
-
 </style>

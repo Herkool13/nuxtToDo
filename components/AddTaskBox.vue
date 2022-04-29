@@ -10,6 +10,9 @@
         placeholder="title..."
         required
       />
+      <small v-if="task.title.length < 2"
+        >title should more than 2 carater</small
+      >
       <input
         class="inp"
         type="text"
@@ -18,7 +21,13 @@
         placeholder="description..."
         required
       />
-      <button class="inp submit" @click.prevent="sendData()">send</button>
+      <small v-if="task.title.length > 70"
+        >title should less than 70 carater</small
+      >
+      <div class="btn-box">
+        <button class="inp submit" @click.prevent="sendData()">send</button>
+        <button class="inp cancel" @click="cancel()">cancel</button>
+      </div>
     </form>
   </div>
 </template>
@@ -31,6 +40,7 @@ export default {
         title: "",
         description: "",
       },
+      showBox:false
     };
   },
   props: ["tasks"],
@@ -42,20 +52,41 @@ export default {
         id = Math.floor(Math.random() * 100000);
         if (!!!this.tasks.find((t) => t.id === id)) break;
       }
-      const newTask = {
-        id,
-        title: this.task.title,
-        description: this.task.description,
-        done:false
-      };
+      if (this.task.title.length >= 2 && this.task.description.length <= 70) {
+        const newTask = {
+          id,
+          title: this.task.title,
+          description: this.task.description,
+          done: false,
+        };
         this.$emit("newTask", newTask);
-        this.task.title='';
-        this.task.description='';
-
+        this.task.title = "";
+        this.task.description = "";
+      }
     },
+    cancel(){
+      this.$emit("closeBox",this.showBox)
+    }
   },
 };
 </script>
 
-<style>
+<style scoped>
+small {
+  color: rgb(255, 0, 0);
+}
+.btn-box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cancel{
+  width: 45%;
+  background-color: #fff;
+      border: none;
+  transition-duration: 600ms;
+}
+.cancel:hover{
+  background-color: yellow;
+}
 </style>

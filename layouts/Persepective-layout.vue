@@ -27,6 +27,12 @@
           ref="img4"
           id="img4"
         />
+        <img
+          src="~/assets/checklist/5.png"
+          class="img-res"
+          ref="img5"
+          id="img5"
+        />
       </div>
     </div>
   </div>
@@ -55,6 +61,9 @@ export default {
       //------------
       this.$refs.img4.style.left = `${5 + event.clientX / 900}rem`;
       this.$refs.img4.style.top = `${-30 - event.clientY / 800}rem`;
+      //------------
+      this.$refs.img5.style.left = `${22 + event.clientY / 300}rem`;
+      this.$refs.img5.style.top = `${-38 + event.clientX / 800}rem`;
     },
   },
 };
@@ -85,6 +94,10 @@ export default {
 #img4 {
   top: -30rem;
   left: 5rem;
+}
+#img5 {
+  top: -38rem;
+  left: 22rem;
 }
 .blur {
   z-index: -5;

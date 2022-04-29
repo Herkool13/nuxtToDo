@@ -97,13 +97,13 @@ body{
       padding-left: .5rem;
   }
   .submit{
-      width: 50%;
+      width: 40%;
       background-color: #fff;
       border: none;
       transition-duration: 600ms;
   }
   .submit:hover{
-      background-color: rgb(196, 190, 10);
-      color:#fff;
+      background-color: rgb(47, 255, 0);
+      color:rgb(0, 0, 0);
       cursor: pointer;
   }

@@ -32,14 +32,13 @@ export default {
       ],
     };
   },
-  watch: {
-    tasks() {
-      //  console.log(this.tasks)
-    },
+  mounted(){
+   this.tasks=JSON.parse(localStorage.getItem('tasks')) || []
   },
   methods: {
     updateTask(e) {
       this.tasks = e;
+      localStorage.setItem("tasks",JSON.stringify(e))
     },
   },
   components: { Persepective, PersepectiveLayout },

@@ -8,7 +8,7 @@
       title="add task"
       src="https://img.icons8.com/external-tanah-basah-detailed-outline-tanah-basah/48/000000/external-plus-user-interface-tanah-basah-detailed-outline-tanah-basah-2.png"
     />
-  <AddTaskBox v-if="showBox" :tasks="tasks" @newTask="getTask($event)"/>
+  <AddTaskBox v-if="showBox" :tasks="tasks" @newTask="getTask($event)" @closeBox="closeBox($event)"/>
   </div>
 </template>
 
@@ -31,6 +31,9 @@ export default {
             ct.push(e);
             this.$emit("addNewTask",ct)
             this.showBox=false;
+        },
+        closeBox(e){
+          this.showBox=e
         }
     },
 };
